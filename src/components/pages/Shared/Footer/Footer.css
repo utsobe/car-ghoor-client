@@ -1,0 +1,20 @@
+.bg-color {
+    background-color: #1a2536;
+}
+
+.lists {
+    list-style: none;
+    display: inline;
+    cursor: pointer;
+}
+
+.lists li a {
+    text-decoration: none;
+    color: white;
+}
+
+.lists li:hover {
+    color: #0d6efd;
+    margin-left: 10px;
+    transition: .5s;
+}

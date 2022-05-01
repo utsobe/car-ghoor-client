@@ -9,7 +9,7 @@ import slider4 from '../../../../images/slider-images/image-4.png';
 const Banner = () => {
     return (
         <div>
-            <Carousel className='bg-slider'>
+            <Carousel className='bg-slider mt-'>
                 <Carousel.Item className='py-5 bg-slider'>
                     <div className="container">
                         <div className="row">
