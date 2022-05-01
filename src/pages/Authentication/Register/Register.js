@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 
 const Register = () => {
     return (
@@ -31,6 +32,7 @@ const Register = () => {
                     <input className='btn btn-primary w-100 fs-5' type="submit" value="Register" />
                 </form>
                 <p className='navigate'>Already Have Account? <Link className='navigate-link' to='/login'>Login</Link></p>
+                <SocialLogin></SocialLogin>
             </div>
         </div>
     );

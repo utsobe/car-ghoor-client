@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import './Login.css'
 
 const Login = () => {
@@ -22,6 +23,7 @@ const Login = () => {
                     <input className='btn btn-primary w-100 fs-5' type="submit" value="Login" />
                 </form>
                 <p className='navigate'>Not a Member? <Link className='navigate-link' to='/register'>Register</Link></p>
+                <SocialLogin></SocialLogin>
             </div>
         </div>
     );
