@@ -1,4 +1,5 @@
 import React from 'react';
+import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 
@@ -28,7 +29,9 @@ const Register = () => {
                         <span></span>
                         <label>Confirm Password</label>
                     </div>
-                    <div className="pass">Forgot Password?</div>
+                    <Form.Group className="pass" controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="Agreed to terms and condition" />
+                    </Form.Group>
                     <input className='btn btn-primary w-100 fs-5' type="submit" value="Register" />
                 </form>
                 <p className='navigate'>Already Have Account? <Link className='navigate-link' to='/login'>Login</Link></p>
