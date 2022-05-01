@@ -5,9 +5,9 @@ import './Header.css';
 const Header = () => {
     return (
         <div>
-            <Navbar className='nav-design' collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar className='nav-design py-3' collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand className='fw-bold fs-2' href="#home">CAR<span className='text-primary'>GHOOR</span></Navbar.Brand>
+                    <Navbar.Brand className='fw-bold fs-2' href="#home"><span className='text-danger'>CAR</span>GHOOR</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto">
@@ -15,6 +15,7 @@ const Header = () => {
                             <Nav.Link className='fonts' href="#pricing">PRICING</Nav.Link>
                             <Nav.Link className='fonts' href="#deets">BLOG</Nav.Link>
                             <Nav.Link className='fonts' href="#memes">INVENTORY</Nav.Link>
+                            <button className='btn btn-primary ms-4 nav-btn'>Login</button>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

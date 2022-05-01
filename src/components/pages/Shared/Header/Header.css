@@ -8,6 +8,10 @@
     color: white !important;
 }
 
+.nav-btn {
+    font-weight: 600;
+}
+
 /* .color-1 {
     background-color: #1a2536;
     background-size: cover;
