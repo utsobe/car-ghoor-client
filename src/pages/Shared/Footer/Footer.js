@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOut } from '@fortawesome/free-solid-svg-icons';
@@ -6,8 +6,15 @@ import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 const Footer = () => {
     const date = new Date();
     const year = date.getFullYear();
+
+    const [item, setItem] = useState([]);
+    useEffect(() => {
+        fetch('fakeData.json')
+            .then(res => res.json())
+            .then(data => setItem(data))
+    }, [])
     return (
-        <footer className='bg-color text-light pt-5 mt-3'>
+        <footer className='bg-color text-light pt-5 '>
             <div className='container'>
                 <div className="row">
                     <div className="col pt-4">
@@ -38,6 +45,7 @@ const Footer = () => {
                             <li>FAQ?</li>
                             <li>News</li>
                             <li>Site Map</li>
+                            <li>{item.length}</li>
                         </ol>
                     </div>
                     <div className="col pt-4">
