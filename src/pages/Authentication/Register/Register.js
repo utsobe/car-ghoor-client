@@ -1,32 +1,23 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import './Register.css';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 
 const Register = () => {
     const [name, setName] = useState({ value: '', error: '' });
     const [email, setEmail] = useState({ value: '', error: '' });
     const [createPassword, setCreatePassword] = useState({ value: '', error: '' });
     const [confirmPassword, setConfirmPassword] = useState({ value: '', error: '' });
+    const [agree, setAgree] = useState(false);
+    const navigate = useNavigate();
 
-    // firebase auth 
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useCreateUserWithEmailAndPassword(auth);
-
-    if (user) {
-        console.log(user.user);
-    }
-
-    if (error) {
-        console.log(error.message);
-    }
+    const [updateProfile, updating, error] = useUpdateProfile(auth);
+    const [sendEmailVerification, sending, error2] = useSendEmailVerification(auth);
 
     const handleName = nameInput => {
         if (nameInput === '') {
@@ -66,7 +57,7 @@ const Register = () => {
         }
     };
 
-    const handleRegister = event => {
+    const handleRegister = async event => {
         event.preventDefault();
 
         if (createPassword.value !== confirmPassword.value) {
@@ -74,7 +65,37 @@ const Register = () => {
         }
         else {
             if (name.value && email.value && createPassword.value && confirmPassword.value) {
-                createUserWithEmailAndPassword(email.value, createPassword.value);
+                await createUserWithEmailAndPassword(auth, email.value, createPassword.value)
+                    .then((userCredential) => {
+                        // Signed in 
+                        const user = userCredential.user;
+                        toast.success('User registered successfully', {
+                            toastId: "customId",
+                            position: toast.POSITION.TOP_CENTER
+                        });
+                        toast.success('Email verification sent', {
+                            toastId: "customId2",
+                            position: toast.POSITION.TOP_CENTER
+                        });
+                        navigate('/');
+                    })
+                    .catch((error) => {
+                        const errorMessage = error.message;
+                        if (errorMessage.includes('auth/email-already-in-use')) {
+                            toast.error('Already registered', {
+                                toastId: "customId",
+                                position: toast.POSITION.TOP_CENTER
+                            });
+                        }
+                        else {
+                            toast.error(errorMessage, {
+                                toastId: "customId",
+                                position: toast.POSITION.TOP_CENTER
+                            });
+                        }
+                    });
+                await updateProfile({ displayName: name.value });
+                await sendEmailVerification();
             }
         }
     }
@@ -125,9 +146,9 @@ const Register = () => {
                         }
                     </div>
                     <Form.Group className="pass" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Agreed to terms and condition" />
+                        <Form.Check onClick={() => setAgree(!agree)} className={!agree ? 'text-danger' : ''} type="checkbox" label="Agreed to terms and condition" />
                     </Form.Group>
-                    <input className='btn btn-primary w-100 fs-5' type="submit" value="Register" />
+                    <input disabled={!agree} className='btn btn-primary w-100 fs-5' type="submit" value="Register" />
                 </form>
                 <p className='navigate'>Already Have Account? <Link className='navigate-link' to='/login'>Login</Link></p>
                 <SocialLogin></SocialLogin>
