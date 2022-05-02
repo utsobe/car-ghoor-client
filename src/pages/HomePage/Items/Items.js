@@ -3,7 +3,7 @@ import { Button, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const Items = ({ item }) => {
-    const { id, name, image, price, description, supplier, quantity } = item;
+    const { _id, name, image, price, description, supplier, quantity } = item;
 
     const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const Items = ({ item }) => {
                     <div className='d-flex
                     align-items-center justify-content-between'>
                         <h6>Available Quantity: {quantity}</h6>
-                        <Button onClick={() => handleUpdateItem(id)} variant="primary">Update</Button>
+                        <Button onClick={() => handleUpdateItem(_id)} variant="primary">Update</Button>
                     </div>
                 </Card.Body>
             </Card>
