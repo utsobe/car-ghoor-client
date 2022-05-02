@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import './Login.css'
 
@@ -16,8 +18,24 @@ const Login = () => {
     if (user) {
         console.log('login success', user.user);
     }
+    if (loading) {
+        console.log('loading');
+        return <Loading></Loading>;
+    }
 
     if (error) {
+        if (error.message.includes('auth/wrong-password')) {
+            toast.error('Incorrect Email or Password', {
+                toastId: "customId",
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
+        else {
+            toast.error(error.message, {
+                toastId: "customId",
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
         console.log(error.message);
     }
 

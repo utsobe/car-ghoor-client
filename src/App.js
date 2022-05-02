@@ -6,6 +6,9 @@ import Home from './pages/HomePage/Home/Home';
 import Footer from './pages/Shared/Footer/Footer';
 import Header from './pages/Shared/Header/Header';
 import UpdateItem from './pages/UpdateItem/UpdateItem';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Loading from './pages/Shared/Loading/Loading';
 
 function App() {
   return (
@@ -18,6 +21,7 @@ function App() {
         <Route path='/register' element={<Register></Register>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }
