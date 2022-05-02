@@ -9,6 +9,7 @@ import UpdateItem from './pages/UpdateItem/UpdateItem';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from './pages/Shared/Loading/Loading';
+import RequireAuth from './pages/Authentication/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -16,7 +17,11 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/update/:id' element={<UpdateItem></UpdateItem>}></Route>
+        <Route path='/update/:id' element={
+          <RequireAuth>
+            <UpdateItem></UpdateItem>
+          </RequireAuth>
+        }></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
       </Routes>

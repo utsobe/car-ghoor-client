@@ -5,14 +5,24 @@ import github from '../../../images/social-login/github.svg';
 import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../Loading/Loading';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    let from = location.state?.from?.pathname || '/';
+
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [signInWithFacebook, user2, loading2, error2] = useSignInWithFacebook(auth);
     const [signInWithGithub, user3, loading3, error3] = useSignInWithGithub(auth);
 
     if (loading || loading2 || loading3) {
         return <Loading></Loading>;
+    }
+
+    if (user || user2 || user3) {
+        navigate(from, { replace: true });
     }
 
     return (

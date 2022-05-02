@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
@@ -9,6 +9,10 @@ import './Login.css'
 
 const Login = () => {
     const emailRef = useRef('');
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    let from = location.state?.from?.pathname || '/';
 
     const [
         signInWithEmailAndPassword,
@@ -19,17 +23,24 @@ const Login = () => {
 
     const [sendPasswordResetEmail, sending, error2] = useSendPasswordResetEmail(auth);
 
-    if (user) {
-        console.log('login success', user.user);
-    }
-    if (loading) {
+    if (loading || sending) {
         console.log('loading');
         return <Loading></Loading>;
+    }
+
+    if (user) {
+        navigate(from, { replace: true });
     }
 
     if (error) {
         if (error.message.includes('auth/wrong-password')) {
             toast.error('Incorrect Email or Password', {
+                toastId: "customId",
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
+        else if (error.message.includes('auth/user-not-found')) {
+            toast.error('User not registered', {
                 toastId: "customId",
                 position: toast.POSITION.TOP_CENTER
             });
