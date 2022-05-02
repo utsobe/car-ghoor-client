@@ -8,7 +8,7 @@ const Items = ({ item }) => {
     const navigate = useNavigate();
 
     const handleUpdateItem = id => {
-        navigate(`/update/${id}`);
+        navigate(`/inventory/${id}`);
     }
     return (
         <div className="card-group">

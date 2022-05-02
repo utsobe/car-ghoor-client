@@ -9,7 +9,7 @@ const Footer = () => {
 
     const [item, setItem] = useState([]);
     useEffect(() => {
-        fetch('fakeData.json')
+        fetch('http://localhost:5000/users')
             .then(res => res.json())
             .then(data => setItem(data))
     }, [])
