@@ -1,11 +1,34 @@
 import React, { useState } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import './Login.css'
 
 const Login = () => {
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    if (user) {
+        console.log('login success', user.user);
+    }
+
+    if (error) {
+        console.log(error.message);
+    }
+
     const handleLogin = event => {
         event.preventDefault();
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+
+        if (email && password) {
+            signInWithEmailAndPassword(email, password);
+        }
     }
     return (
         <div className='bg-color d-flex justify-content-center py-5'>
