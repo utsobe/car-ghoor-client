@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import './Login.css'
 
 const Login = () => {
+    const handleLogin = event => {
+        event.preventDefault();
+    }
     return (
         <div className='bg-color d-flex justify-content-center py-5'>
             <div className="center mx-3">
                 <h2 className='fw-bold text-primary'>Login</h2>
-                <form method="post">
+                <form onSubmit={handleLogin}>
                     <div className='txt_field_mb'>
                         <div className="txt_field">
                             <input type="email" name='email' required />

@@ -20,7 +20,13 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
-    console.log(user?.user);
+    if (user) {
+        console.log(user.user);
+    }
+
+    if (error) {
+        console.log(error.message);
+    }
 
     const handleName = nameInput => {
         if (nameInput === '') {
@@ -62,9 +68,15 @@ const Register = () => {
 
     const handleRegister = event => {
         event.preventDefault();
-        createUserWithEmailAndPassword(email.value, createPassword.value);
-        console.log(name.value, email.value, createPassword.value, confirmPassword.value);
 
+        if (createPassword.value !== confirmPassword.value) {
+            setConfirmPassword({ value: '', error: "Confirm password didn't match" })
+        }
+        else {
+            if (name.value && email.value && createPassword.value && confirmPassword.value) {
+                createUserWithEmailAndPassword(email.value, createPassword.value);
+            }
+        }
     }
 
     return (
