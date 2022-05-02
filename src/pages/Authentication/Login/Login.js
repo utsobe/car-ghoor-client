@@ -9,15 +9,19 @@ const Login = () => {
             <div className="center mx-3">
                 <h2 className='fw-bold text-primary'>Login</h2>
                 <form method="post">
-                    <div className="txt_field">
-                        <input type="email" name='email' required />
-                        <span></span>
-                        <label>Email</label>
+                    <div className='txt_field_mb'>
+                        <div className="txt_field">
+                            <input type="email" name='email' required />
+                            <span></span>
+                            <label>Email</label>
+                        </div>
                     </div>
-                    <div className="txt_field">
-                        <input type="password" name='password' required />
-                        <span></span>
-                        <label>Password</label>
+                    <div className='txt_field_mb'>
+                        <div className="txt_field">
+                            <input type="password" name='password' required />
+                            <span></span>
+                            <label>Password</label>
+                        </div>
                     </div>
                     <div className="pass">Forgot Password?</div>
                     <input className='btn btn-primary w-100 fs-5' type="submit" value="Login" />
