@@ -12,6 +12,7 @@ import Loading from './pages/Shared/Loading/Loading';
 import RequireAuth from './pages/Authentication/RequireAuth/RequireAuth';
 import Inventories from './pages/Inventories/Inventories';
 import AddItem from './pages/AddItem/AddItem';
+import MyInventories from './pages/MyInventories/MyInventories';
 
 function App() {
   return (
@@ -32,6 +33,11 @@ function App() {
         <Route path='/add' element={
           <RequireAuth>
             <AddItem></AddItem>
+          </RequireAuth>
+        }></Route>
+        <Route path='/myinventories' element={
+          <RequireAuth>
+            <MyInventories></MyInventories>
           </RequireAuth>
         }></Route>
         <Route path='/login' element={<Login></Login>}></Route>

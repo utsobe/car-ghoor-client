@@ -28,7 +28,7 @@ const Header = () => {
                                 <>
                                     <Nav.Link className='fonts' as={Link} to='/inventories'>MANAGE ITEMS</Nav.Link>
                                     <Nav.Link className='fonts' as={Link} to='/add'>ADD ITEM</Nav.Link>
-                                    <Nav.Link className='fonts' as={Link} to='/inventories'>MY ITEMS</Nav.Link>
+                                    <Nav.Link className='fonts' as={Link} to='/myinventories'>MY ITEMS</Nav.Link>
                                 </>
                             }
                             {

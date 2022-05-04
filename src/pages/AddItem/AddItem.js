@@ -1,9 +1,17 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const AddItem = () => {
+    const [user] = useAuthState(auth);
+
+    console.log(user.email);
+
+
     const handleAddInventory = event => {
         event.preventDefault();
+        const email = user.email;
         const image = event.target.image.value;
         const name = event.target.name.value;
         const supplier = event.target.supplier.value.toUpperCase();
@@ -12,7 +20,7 @@ const AddItem = () => {
         const sold = parseInt(event.target.sold.value);
         const quantity = parseInt(event.target.quantity.value);
 
-        const car = { image, name, supplier, description, price, sold, quantity };
+        const car = { email, image, name, supplier, description, price, sold, quantity };
         console.log(car);
 
         const url = 'http://localhost:5000/car';

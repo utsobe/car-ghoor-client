@@ -104,6 +104,7 @@ const UpdateItem = () => {
                                         name='number'
                                         placeholder="Quantity"
                                         className='ms-3'
+                                        required
                                     />
                                     <Button type='submit' variant="primary">
                                         Add
