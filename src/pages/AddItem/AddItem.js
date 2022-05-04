@@ -6,9 +6,6 @@ import auth from '../../firebase.init';
 const AddItem = () => {
     const [user] = useAuthState(auth);
 
-    console.log(user.email);
-
-
     const handleAddInventory = event => {
         event.preventDefault();
         const email = user.email;
@@ -33,7 +30,6 @@ const AddItem = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 toast.success('Item restock successfully', {
                     toastId: "customId",
                     position: toast.POSITION.TOP_CENTER

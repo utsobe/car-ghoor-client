@@ -17,7 +17,6 @@ const MyInventories = () => {
             .then(res => res.json())
             .then(data => setItems(data))
     }, [])
-    console.log(items);
 
     const handleUpdate = id => {
         navigate(`/inventory/${id}`);
