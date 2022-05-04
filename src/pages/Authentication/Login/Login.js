@@ -25,7 +25,6 @@ const Login = () => {
     const [sendPasswordResetEmail, sending, error2] = useSendPasswordResetEmail(auth);
 
     if (loading || sending) {
-        console.log('loading');
         return <Loading></Loading>;
     }
 
@@ -52,7 +51,6 @@ const Login = () => {
                 position: toast.POSITION.TOP_CENTER
             });
         }
-        console.log(error.message);
     }
 
     const handleLogin = async event => {
