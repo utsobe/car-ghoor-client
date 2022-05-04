@@ -13,6 +13,8 @@ import RequireAuth from './pages/Authentication/RequireAuth/RequireAuth';
 import Inventories from './pages/Inventories/Inventories';
 import AddItem from './pages/AddItem/AddItem';
 import MyInventories from './pages/MyInventories/MyInventories';
+import NotFound from './pages/NotFound/NotFound';
+import Blog from './pages/Blog/Blog';
 
 function App() {
   return (
@@ -42,6 +44,8 @@ function App() {
         }></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/blog' element={<Blog></Blog>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
       <ToastContainer />

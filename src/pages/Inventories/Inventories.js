@@ -16,7 +16,7 @@ const Inventories = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure?');
         if (proceed) {
-            const url = `http://localhost:5000/car/${id}`;
+            const url = `https://sleepy-escarpment-95192.herokuapp.com/car/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

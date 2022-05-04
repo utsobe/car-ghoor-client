@@ -22,7 +22,7 @@ const Header = () => {
                         <Nav className="ms-auto">
                             <Nav.Link className='fonts' as={Link} to='/'>HOME</Nav.Link>
                             <Nav.Link as={Link} to='/#inventory' className='fonts' >INVENTORY</Nav.Link>
-                            <Nav.Link className='fonts' >BLOG</Nav.Link>
+                            <Nav.Link className='fonts' as={Link} to='/blog' >BLOG</Nav.Link>
                             {
                                 user?.uid &&
                                 <>

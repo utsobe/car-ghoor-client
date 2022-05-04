@@ -4,7 +4,7 @@ const useItems = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/car')
+        fetch('https://sleepy-escarpment-95192.herokuapp.com/car')
             .then(res => res.json())
             .then(data => setItems(data))
     }, [])

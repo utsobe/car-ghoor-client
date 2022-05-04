@@ -12,7 +12,7 @@ const UpdateItem = () => {
     // const [restock, setRestock] = useState(0);
 
     useEffect(() => {
-        const url = `http://localhost:5000/car/${id}`;
+        const url = `https://sleepy-escarpment-95192.herokuapp.com/car/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setItem(data));
@@ -28,7 +28,7 @@ const UpdateItem = () => {
 
         // const [updated] = useUpdate(id, car);
 
-        const url = `http://localhost:5000/car/${id}`;
+        const url = `https://sleepy-escarpment-95192.herokuapp.com/car/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -57,7 +57,7 @@ const UpdateItem = () => {
         console.log(quantity, sold);
         const car = { quantity, sold };
 
-        const url = `http://localhost:5000/car/${id}`;
+        const url = `https://sleepy-escarpment-95192.herokuapp.com/car/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {

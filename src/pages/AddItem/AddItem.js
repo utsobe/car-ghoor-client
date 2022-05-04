@@ -20,7 +20,7 @@ const AddItem = () => {
         const car = { email, image, name, supplier, description, price, sold, quantity };
         console.log(car);
 
-        const url = 'http://localhost:5000/car';
+        const url = 'https://sleepy-escarpment-95192.herokuapp.com/car';
         fetch(url, {
             method: 'POST',
             headers: {

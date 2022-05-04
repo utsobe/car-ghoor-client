@@ -4,7 +4,7 @@ const useUpdate = (id, car) => {
     const [updated, setUpdated] = useState({});
 
     useEffect(() => {
-        const url = `http://localhost:5000/car/${id}`;
+        const url = `https://sleepy-escarpment-95192.herokuapp.com/car/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
