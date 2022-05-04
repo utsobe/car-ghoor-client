@@ -2,6 +2,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useItems from '../../hooks/useItems';
 
 const Inventories = () => {
@@ -24,6 +25,10 @@ const Inventories = () => {
                     console.log(data);
                     const remaining = items.filter(item => item._id !== id);
                     setItems(remaining);
+                    toast.success('Deleted successfully', {
+                        toastId: "customId",
+                        position: toast.POSITION.TOP_CENTER
+                    })
                 })
         }
     }

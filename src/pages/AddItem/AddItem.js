@@ -42,7 +42,7 @@ const AddItem = () => {
                         <div className="txt_field">
                             <input type="text" name='image' required />
                             <span></span>
-                            <label>Image Link</label>
+                            <label>Image URL</label>
                         </div>
                     </div>
                     <div className='txt_field_mb'>

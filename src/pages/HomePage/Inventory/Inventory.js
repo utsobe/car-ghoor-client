@@ -9,12 +9,12 @@ import './Inventory.css';
 const Inventory = () => {
     const [items] = useItems();
     return (
-        <div className='bg-color py-5'>
+        <div id='inventory' className='bg-color py-5'>
             <div className="container">
                 <h2 className='fw-bold text-center text-white pb-5'>Our Inventory</h2>
                 <div className="row row-cols-md-3 g-5">
                     {
-                        items.map(item => <Items key={item._id} item={item}></Items>)
+                        items.slice(0, 6).map(item => <Items key={item._id} item={item}></Items>)
                     }
                 </div>
                 <div className='my-5 d-flex justify-content-end'>
