@@ -1,6 +1,9 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowAltCircleRight, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 import { Button, FormControl, InputGroup } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const UpdateItem = () => {
     const { id } = useParams();
@@ -36,7 +39,10 @@ const UpdateItem = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('success', data);
-                alert('user updated successfully!');
+                toast.success('Successfully Delivered', {
+                    toastId: "customId",
+                    position: toast.POSITION.TOP_CENTER
+                })
                 if (data.modifiedCount > 0) {
                     setData(quantity);
                 }
@@ -62,7 +68,10 @@ const UpdateItem = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('success', data);
-                alert('user updated successfully!');
+                toast.success('Item restock successfully', {
+                    toastId: "customId",
+                    position: toast.POSITION.TOP_CENTER
+                })
                 event.target.reset();
                 // if (data.modifiedCount > 0) {
                 //     setData(quantity);
@@ -76,7 +85,7 @@ const UpdateItem = () => {
             <div className='container py-5'>
                 <div className="row g-4">
                     <div className="col-sm-1 col-md-7">
-                        <img src={image} width='100%' className='rounded-3 shadow shadow-lg' alt="" />
+                        <img src={image} width='100%' height='100%' className='rounded-3 shadow shadow-lg' alt="" />
                     </div>
                     <div className='col-sm-1 col-md-5 card-group'>
                         <div className="shadow shadow-lg rounded-3 p-4 bg-white">
@@ -103,6 +112,9 @@ const UpdateItem = () => {
                             </form>
                         </div>
                     </div>
+                </div>
+                <div className='my-5 d-flex justify-content-end'>
+                    <Link to='/inventories' className='btn btn-primary'>Manage Inventories <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon></Link>
                 </div>
             </div>
         </div>

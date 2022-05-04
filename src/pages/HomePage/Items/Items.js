@@ -13,7 +13,7 @@ const Items = ({ item }) => {
     return (
         <div className="card-group">
             <Card className='border-0 shadow'>
-                <Card.Img variant="top" src={image} />
+                <Card.Img variant="top" height='100%' src={image} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text className='mb-1'><small>Supplier- <span className='fw-bold'>{supplier}</span></small></Card.Text>
